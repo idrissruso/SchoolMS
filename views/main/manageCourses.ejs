@@ -1,0 +1,79 @@
+<%- include("../spinners/spinner1.ejs")%>
+
+<div class="manageCourses">
+  <h1 class="manageCourses__heading" id="manageCoursesHeading">
+    Gérer les cours
+  </h1>
+  <div class="manageCourses__courses" id="manageCoursesCourses"></div>
+</div>
+
+<!--add new cours modal-->
+<div class="addNewCoursModal addNewCoursModal--hide">
+  <div class="addNewCoursModal__container">
+    <h1 class="addNewCoursModal__heading" id="addNewCoursModalHeading">
+      Ajouter un nouveau cours
+    </h1>
+    <form class="addNewCoursModal__form" id="addNewCoursModalForm">
+      <div class="addNewCoursModal__form-group">
+        <label
+          for="course-name"
+          class="addNewCoursModal__label"
+          id="courseNameLabel"
+          >Nom du Cours :</label
+        >
+        <input
+          type="text"
+          id="course-name"
+          class="addNewCoursModal__input"
+          placeholder="Entrez le nom du cours"
+          required
+        />
+      </div>
+
+      <div class="addNewCoursModal__form-group">
+        <label for="credits" class="addNewCoursModal__label" id="creditsLabel"
+          >Crédits :</label
+        >
+        <input
+          type="number"
+          id="credits"
+          class="addNewCoursModal__input"
+          placeholder="Entrez le nombre de crédits"
+          required
+        />
+      </div>
+      <div class="addNewCoursModal__buttons">
+        <button
+          class="addNewCoursModal__btn addNewCoursModal__btn--cancel"
+          type="reset"
+          id="CourseCancelButton"
+        >
+          Annuler
+        </button>
+        <button
+          class="addNewCoursModal__btn addNewCoursModal__btn--add"
+          type="submit"
+          id="addNewCoursModalSubmit"
+        >
+          Ajouter
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!--cours details modal-->
+<div class="courseDetailsModal courseDetailsModal--hide">
+  <div class="courseDetailsModal__container">
+    <h1 class="courseDetailsModal__heading" id="courseDetailsModalHeading">
+      Détails du cours
+    </h1>
+    <div
+      class="courseDetailsModal__container-content"
+      id="courseDetailsModalContent"
+    ></div>
+  </div>
+</div>
+
+<script src="apiConfig.js"></script>
+<script src="manageCourses.js"></script>

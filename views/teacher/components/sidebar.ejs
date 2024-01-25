@@ -1,0 +1,60 @@
+<aside class="dashboard-container__sidebar toggleSidebar">
+  <div class="sidebar__brand">
+    <div class="sidebar__brand-box">
+      <img src="../logo.png" alt="logo" class="sidebar__brand-logo" />
+    </div>
+    <h1 class="heading-primary sidebar__brand-name">مركز الأوائل</h1>
+  </div>
+  <div class="sidebar__user">
+    <div class="sidebar__user-img--box">
+      <img
+        src="../profile.png"
+        alt="user profile"
+        class="sidebar__user-profile"
+      />
+    </div>
+    <p class="sidebar__user-name"></p>
+  </div>
+  <ul class="navigation">
+    <li class="navigation__item dashboard">
+      <svg class="navigation__item-icon">
+        <use xlink:href="#icon-meter"></use>
+      </svg>
+      <p class="navigation__item-title" id="teacherDashboardTitle">
+        Tableau de bord
+      </p>
+    </li>
+    <li class="navigation__item M_absenteeism">
+      <svg class="navigation__item-icon">
+        <use xlink:href="#icon-calendar"></use>
+      </svg>
+      <p class="navigation__item-title" id="teacherAbsenceTitle">
+        Gérer les absences
+      </p>
+    </li>
+    <li class="navigation__item manageExams">
+      <svg class="navigation__item-icon">
+        <use xlink:href="#icon-params"></use>
+      </svg>
+      <p class="navigation__item-title" id="teacherExamsTitle">
+        Gérer les examens
+      </p>
+    </li>
+  </ul>
+</aside>
+
+<script src="../langmanager.js"></script>
+<script>
+  ;(function () {
+    const teacher = JSON.parse('<%- JSON.stringify(teacher) %>')
+    const loggedInTeacher = JSON.parse('<%- JSON.stringify(loggedInTeacher) %>')
+    const profileImg = document.querySelector('.sidebar__user-profile')
+    if (teacher.profileImage) {
+      profileImg.src = `data:${teacher.profileImageType};base64,${teacher.profileImage}`
+    } else {
+      profileImg.src = '../profile.png'
+    }
+    const name = document.querySelector('.sidebar__user-name')
+    name.textContent = loggedInTeacher.fullName
+  })()
+</script>

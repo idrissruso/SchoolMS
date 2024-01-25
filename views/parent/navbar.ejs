@@ -1,0 +1,93 @@
+<nav class="nav" id="nav">
+  <div class="nav__menu container" id="nav-menu">
+    <div class="nav__shape"></div>
+
+    <div class="nav__close" id="nav-close">
+      <i class="bx bx-x"></i>
+    </div>
+
+    <div class="nav__data">
+      <div class="nav__mask">
+        <!-- Change your profile picture -->
+        <img src="../author.JPG" alt="" class="nav__img" />
+      </div>
+
+      <span class="nav__greeting" id="nav-greeting">Bonjour!</span>
+      <h1 class="nav__name">
+        <span id="name"></span> <br />
+        <span id="surname"></span>
+      </h1>
+    </div>
+
+    <ul class="nav__list">
+      <li class="nav__item">
+        <a href="#home" class="nav__link active-link">
+          <i class="bx bx-user"></i>
+          <span id="nav-link-home">Profil</span>
+        </a>
+      </li>
+      <li class="nav__item">
+        <a href="#weekly-schedule" class="nav__link">
+          <i class="bx bx-calendar"></i>
+          <span id="nav-link-weekly-schedule">Programme Hebdomadaire</span>
+        </a>
+      </li>
+      <li class="nav__item">
+        <a href="#presenses" class="nav__link">
+          <i class="bx bx-check"></i>
+          <span id="nav-link-presences">Présence</span>
+        </a>
+      </li>
+      <li class="nav__item">
+        <a href="#calendar" class="nav__link">
+          <i class="bx bx-calendar-event"></i>
+          <span id="nav-link-calendar">Calendrier des Examens</span>
+        </a>
+      </li>
+      <li class="nav__item">
+        <a href="#results" class="nav__link">
+          <i class="bx bx-file"></i>
+          <span id="nav-link-results">Résultats des Examens</span>
+        </a>
+      </li>
+
+      <li class="nav__item">
+        <a href="#fees" class="nav__link">
+          <i class="bx bx-credit-card"></i>
+          <span id="nav-link-fees">Frais Scolaires</span>
+        </a>
+      </li>
+      <li class="nav__item" id="logout">
+        <a href="#logout" class="nav__link">
+          <i class="bx bx-log-out"></i>
+          <span id="nav-link-logout">Déconnexion</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script src="../langManager.js"></script>
+<script>
+
+  (function(){
+
+
+
+
+
+  const loggedInUser = <%- JSON.stringify(loggedInUser) %>;
+  console.log(loggedInUser);
+  const names = loggedInUser.fullName.split(" ");
+  const name = document.getElementById("name");
+  const surname = document.getElementById("surname");
+  const img = document.querySelector(".nav__img");
+  name.innerHTML = names[0];
+  surname.innerHTML = names[1];
+    if (loggedInUser.profileImage) {
+    img.src = `data:${loggedInUser.profileImageType};base64,${loggedInUser.profileImage}`
+  } else {
+    img.src = `../profile.png`
+  }
+  })()
+</script>

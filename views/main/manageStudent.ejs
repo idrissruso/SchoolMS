@@ -1,0 +1,540 @@
+<%- include("../spinners/spinner1.ejs")%> <%-
+include("../spinners/spinner2.ejs")%>
+<div class="manageStudents">
+  <div class="manageStudents__container">
+    <div class="manageStudents__header">
+      <h1 class="manageStudents__heading" id="manStuTitle">
+        Gérer les élèves.
+      </h1>
+      <button class="manageStudents__header-btn" id="addStudent">
+        <span>
+          <svg class="manageStudents__header-icon">
+            <use xlink:href="#icon-plus"></use>
+          </svg>
+          <span id="manStudAddStuBtn">Ajouter un élève</span>
+        </span>
+      </button>
+    </div>
+    <div class="manageStudents__searchbar">
+      <label
+        class="manageStudents__searchbar-label"
+        for="student"
+        id="manStudSearchLabel"
+        >Rechercher :</label
+      >
+      <input type="text" class="manageStudents__searchbar-input" id="student" />
+    </div>
+
+    <div class="manageStudents__content">
+      <table class="manageStudents__table">
+        <tr class="manageStudents__row manageStudents__row--header">
+          <th class="manageStudents__cell manageStudents__cell--header">#</th>
+          <th
+            class="manageStudents__cell manageStudents__cell--header"
+            id="manStudImage"
+          >
+            Image
+          </th>
+          <th
+            class="manageStudents__cell manageStudents__cell--header"
+            id="manStudMatricule"
+          >
+            Matricule
+          </th>
+          <th
+            class="manageStudents__cell manageStudents__cell--header"
+            id="manStudName"
+          >
+            Nom et Prénom
+          </th>
+          <th
+            class="manageStudents__cell manageStudents__cell--header"
+            id="manStuBrDate"
+          >
+            Date de naissance
+          </th>
+          <th
+            class="manageStudents__cell manageStudents__cell--header"
+            id="manStudTel"
+          >
+            Téléphone
+          </th>
+          <th
+            class="manageStudents__cell manageStudents__cell--header"
+            id="manStudParentName"
+          >
+            Nom du parent
+          </th>
+          <th
+            class="manageStudents__cell manageStudents__cell--header"
+            id="manStudParentPhone"
+          >
+            Téléphone des parents
+          </th>
+          <th
+            class="manageStudents__cell manageStudents__cell--header"
+            id="manStudAdress"
+          >
+            Adresse
+          </th>
+          <th
+            class="manageStudents__cell manageStudents__cell--header"
+            id="manStudPayment"
+          >
+            Frais
+          </th>
+          <th
+            class="manageStudents__cell manageStudents__cell--header"
+            id="manStudAction"
+          >
+            Action
+          </th>
+        </tr>
+        <tbody id="table-body"></tbody>
+
+        <!-- Repeat the same structure for other students -->
+      </table>
+    </div>
+  </div>
+</div>
+
+<!--Modify Student-->
+<div class="modifyStudent hidden">
+  <div class="editStudent">
+    <div class="editStudent__container">
+      <div class=""></div>
+      <h1 class="editStudent__heading" id="editStudent-heading">
+        Mettre à jour le profil de l'élève
+      </h1>
+
+      <div class="editStudent__content">
+        <form class="form" id="modifyForm">
+          <div class="form__box-img">
+            <figure>
+              <img
+                src="profile.png"
+                alt="user image"
+                class="form__box-img--img"
+              />
+              <figcaption class="form__box-img--caption" id="editImageBtn">
+                🖋️
+              </figcaption>
+            </figure>
+
+            <span class="form__box-img--name">Idrissa Rusongeka</span>
+            <input type="file" class="form__box-img--file" id="file" />
+            <label for="file" class="form__box-img--btn" id="editImageBtnLabel"
+              >Modifier L'image</label
+            >
+          </div>
+          <div class="form__box-info">
+            <h3
+              class="form__box-info--heading"
+              id="editStudent-profile-heading"
+            >
+              Modifier le profil
+            </h3>
+            <div class="form__box-info--group">
+              <label
+                for="matricule"
+                class="form__box-info--label"
+                id="editStudent-matricule-label"
+                >Matricule:</label
+              >
+              <input
+                type="text"
+                name="matricule"
+                id="matricule"
+                class="form__box-info--input"
+                placeholder="Matricule"
+                required
+              />
+            </div>
+            <div class="form__box-info--group">
+              <label
+                for="nomComplet"
+                class="form__box-info--label"
+                id="editStudent-nomComplet-label"
+                >Nom Complet:</label
+              >
+              <input
+                type="text"
+                name="nomComplet"
+                id="nomComplet"
+                class="form__box-info--input"
+                placeholder="Nom Complet"
+                required
+              />
+            </div>
+            <div class="form__box-info--group">
+              <label
+                for="telephone"
+                class="form__box-info--label"
+                id="editStudent-telephone-label"
+                >Téléphone:</label
+              >
+              <input
+                type="tel"
+                name="telephone"
+                id="telephone"
+                class="form__box-info--input"
+                placeholder="Téléphone"
+                required
+              />
+            </div>
+            <div class="form__box-info--group">
+              <label
+                for="dateNaissance"
+                class="form__box-info--label"
+                id="editStudent-dateNaissance-label"
+                >Date de Naissance:</label
+              >
+              <input
+                type="date"
+                name="dateNaissance"
+                id="dateNaissance"
+                class="form__box-info--input"
+                required
+              />
+            </div>
+            <div class="form__box-info--group">
+              <label
+                for="sex"
+                class="form__box-info--label"
+                id="editStudent-sex-label"
+                >Sexe</label
+              >
+              <select name="sex" id="sex" class="form__box-info--input">
+                <option value="homme" id="editStudent-sex-option-homme">
+                  Homme
+                </option>
+                <option value="femme" id="editStudent-sex-option-femme">
+                  Femme
+                </option>
+              </select>
+            </div>
+            <div class="form__box-info--group">
+              <label
+                for="classe"
+                class="form__box-info--label"
+                id="editStudent-classe-label"
+                >Classe</label
+              >
+              <select
+                name="classe"
+                id="classe"
+                class="form__box-info--input"
+              ></select>
+            </div>
+            <h3 class="form__box-info--subheading" id="editStudent-subheading">
+              Information du Parent
+            </h3>
+            <div class="form__box-info--group">
+              <label
+                for="parentName"
+                class="form__box-info--label"
+                id="editStudent-parentName-label"
+                >Nom du Parent:</label
+              >
+              <input
+                type="text"
+                name="parentName"
+                id="parentName"
+                class="form__box-info--input"
+                placeholder="Nom du Parent"
+                required
+              />
+            </div>
+            <div class="form__box-info--group">
+              <label
+                for="parentProfession"
+                class="form__box-info--label"
+                id="editStudent-parentProfession-label"
+                >Profession du Parent:</label
+              >
+              <input
+                type="text"
+                name="parentProfession"
+                id="parentProfession"
+                class="form__box-info--input"
+                placeholder="Profession du Parent"
+                required
+              />
+            </div>
+            <div class="form__box-info--group">
+              <label
+                for="parentPhone"
+                class="form__box-info--label"
+                id="editStudent-parentPhone-label"
+                >Téléphone du Parent:</label
+              >
+              <input
+                type="tel"
+                name="parentPhone"
+                id="parentPhone"
+                class="form__box-info--input"
+                placeholder="Téléphone du Parent"
+                required
+              />
+            </div>
+            <div class="form__box-info--group">
+              <label
+                for="parentEmail"
+                class="form__box-info--label"
+                id="editStudent-parentEmail-label"
+                >Email du Parent:</label
+              >
+              <input
+                type="email"
+                name="parentEmail"
+                id="parentEmail"
+                class="form__box-info--input"
+                placeholder="Email du Parent"
+                required
+              />
+            </div>
+            <div class="form__box-info--group">
+              <label
+                for="parentAddress"
+                class="form__box-info--label"
+                id="editStudent-parentAddress-label"
+                >Adresse:</label
+              >
+              <textarea
+                name="parentAddress"
+                id="parentAddress"
+                class="form__box-info--input"
+                placeholder="Adresse"
+                rows="3"
+                required
+              ></textarea>
+            </div>
+            <div class="form__box-info--group form__box-info--group-action">
+              <button
+                class="form__box-info--btn"
+                id="editStudent-submit-button"
+              >
+                Modifier
+              </button>
+              <span class="close" id="editStudent-cancel-button">annuler</span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--delete modal-->
+<div class="deleteModal deleteStudent modalHide">
+  <div class="deleteModal__content">
+    <h2 id="deleteModalTitle" class="deleteModal__title">
+      Confirmation de Suppression
+    </h2>
+    <svg id="deleteModalIcon" class="deleteModal__icon">
+      <use xlink:href="#icon-x-circle" />
+    </svg>
+    <p id="deleteModalMessage" class="deleteModal__message">
+      Êtes-vous sûr(e) de vouloir supprimer cet élève ?
+    </p>
+    <div class="deleteModal__buttons">
+      <button
+        id="deleteModalCancel"
+        class="deleteModal__btn deleteModal__btn--cancel"
+      >
+        Annuler
+      </button>
+      <button
+        id="deleteModalConfirm"
+        class="deleteModal__btn deleteModal__btn--confirm"
+      >
+        Confirmer
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--Absenteeism-->
+
+<div class="absenteeism absenteeismHide" id="absenteeismModal">
+  <div class="absenteeism__modal">
+    <h2 class="absenteeism__title" id="absenteeismTitle">Suivi de Présence</h2>
+    <section class="student-profile" id="studentProfileSection"></section>
+    <section class="attendance-list" id="attendanceListSection">
+      <h3 class="attendance-list__title" id="attendanceListTitle">
+        Historique d'Absence
+      </h3>
+      <table class="attendance-list__table">
+        <thead>
+          <tr>
+            <th id="absenteeismDatedAbsence">Date d'Absence</th>
+            <th id="absenteeismStatus">Status</th>
+          </tr>
+        </thead>
+        <tbody id="absenteeism__tbody">
+          <!-- Add more rows for other dates -->
+        </tbody>
+      </table>
+    </section>
+    <section class="add-attendance" id="addAttendanceSection">
+      <h3 class="add-attendance__title" id="modifyAttendanceTitle">
+        Modifier le Status
+      </h3>
+      <form class="add-attendance__form">
+        <div class="input-group">
+          <label
+            for="absence-date"
+            class="input-group__label"
+            id="absenceDateLabel"
+            >Date d'Absence:</label
+          >
+          <select
+            id="absence-date"
+            name="absence-date"
+            required
+            class="input-group__input"
+          ></select>
+        </div>
+        <div class="input-group">
+          <label for="status" class="input-group__label" id="statusLabel"
+            >Statut:</label
+          >
+          <select id="status" name="status" required class="input-group__input">
+            <option value="Non justifié">Non justifié</option>
+            <option value="Justifié">Justifié</option>
+          </select>
+        </div>
+        <div class="input-group input-group__actions">
+          <button
+            type="reset"
+            class="add-attendance__cancel-button btn"
+            id="cancelButton"
+          >
+            Annuler
+          </button>
+          <button
+            type="submit"
+            class="add-attendance__submit-button btn"
+            id="submitButton"
+          >
+            Modifier
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>
+
+<!--payment-->
+
+<div class="payment paymentHidden">
+  <div class="payment__container">
+    <div class="payment__container-content">
+      <p class="payment__close-btn" id="payment-close-btn">✖️</p>
+      <h2 class="payment__history-title" id="payment-history-title">
+        Historique des paiements
+      </h2>
+      <div class="payment__history">
+        <table class="payment__history-table">
+          <thead class="payment__history__row--header">
+            <tr class="payment__history__row">
+              <th id="payment-date-header">Date</th>
+              <th id="payment-amount-header">Montant</th>
+              <th id="payment-month-header">Mois</th>
+            </tr>
+          </thead>
+          <tbody id="payment__table-body"></tbody>
+        </table>
+        <form action="#" class="payment__new-payment">
+          <h3
+            class="payment__new-payment--title"
+            id="payment-new-payment-title"
+          >
+            Nouveau Paiement
+          </h3>
+          <div class="payment__new-payment--group">
+            <label
+              for="payment-date"
+              class="payment__new-payment--label"
+              id="payment-date-label"
+              >Date:</label
+            >
+            <input
+              type="date"
+              name="payment-date"
+              id="payment-date"
+              class="payment__new-payment--input"
+              name="payment_date"
+              required
+            />
+          </div>
+          <div class="payment__new-payment--group">
+            <label
+              for="payment-month"
+              class="payment__new-payment--label"
+              id="payment-month-label"
+              >Mois:</label
+            >
+            <select
+              name="payment-month"
+              id="payment-month"
+              class="payment__new-payment--input"
+              name="month"
+              required
+            >
+              <option value="" disabled selected>Sélectionnez un mois</option>
+              <option value="Octobre">Octobre</option>
+              <option value="Novembre">Novembre</option>
+              <option value="Décembre">Décembre</option>
+              <option value="Janvier">Janvier</option>
+              <option value="Février">Février</option>
+              <option value="Mars">Mars</option>
+              <option value="Avril">Avril</option>
+              <option value="Mai">Mai</option>
+              <option value="Juin">Juin</option>
+            </select>
+          </div>
+
+          <div class="payment__new-payment--group">
+            <label
+              for="payment-amount"
+              class="payment__new-payment--label"
+              id="payment-amount-label"
+              >Montant:</label
+            >
+            <input
+              type="number"
+              name="payment-amount"
+              id="payment-amount"
+              class="payment__new-payment--input"
+              name="amount"
+              required
+            />
+          </div>
+          <div class="payment__new-payment--group">
+            <button class="payment__new-payment--btn" id="payment-add-btn">
+              Ajouter
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- view student-->
+
+<div class="viewStudent viewStudent-hide">
+  <div class="viewStudent__container">
+    <div class="viewStudent__container-content"></div>
+  </div>
+</div>
+
+<!--scripts-->
+<script src="apiConfig.js"></script>
+<script src="langManager.js"></script>
+<script src="manageStudents.js"></script>
+<script src="fees.js"></script>
+<script src="editStudent.js"></script>
+<script src="deleteStudent.js"></script>
+<script src="absenteeisme.js"></script>

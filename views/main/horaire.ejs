@@ -1,0 +1,43 @@
+<%- include("../spinners/spinner2.ejs")%>
+
+<div class="manageAbsenteeism">
+  <div class="header">
+    <h1 class="header__title" id="horaireTitle">
+      Horaire Hebdomadaire de classe
+    </h1>
+  </div>
+  <form class="form" id="form">
+    <div class="form__group">
+      <div class="form__select-group">
+        <label class="form__label" for="class-select" id="horaireClassLabel"
+          >classe :</label
+        >
+        <select class="form__select" id="class-select" required></select>
+      </div>
+    </div>
+    <section id="schedule" class="section">
+      <div class="section__content">
+        <table class="class-schedule">
+          <thead>
+            <tr>
+              <th></th>
+              <th id="lundiLabel">Lundi</th>
+              <th id="mardiLabel">Mardi</th>
+              <th id="mercrediLabel">Mercredi</th>
+              <th id="jeudiLabel">Jeudi</th>
+              <th id="vendrediLabel">Vendredi</th>
+              <th id="samediLabel">Samedi</th>
+            </tr>
+          </thead>
+          <tbody id="scheduleTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <button class="form__button" type="submit" id="updateButton">
+      Mettre à jour
+    </button>
+  </form>
+</div>
+<script src="apiConfig.js"></script>
+<script src="horaire.js"></script>
